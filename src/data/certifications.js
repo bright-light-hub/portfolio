@@ -28,7 +28,7 @@ const certifications = [
   {
     id: 2,
 
-    title: "Complete Guide to Power BI for Data Analysts by Microsoft Press (2024)",
+    title: "Complete Guide to Power BI, Microsoft",
 
     issuer: "LinkedIn Learning",
 
