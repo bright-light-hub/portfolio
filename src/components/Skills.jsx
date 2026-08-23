@@ -9,7 +9,6 @@ function Skills() {
         "Python",
         "JavaScript",
         "C",
-        "C++",
         "SQL",
       ],
     },
@@ -40,6 +39,8 @@ function Skills() {
       title: "Data & Tools",
       description: "Technologies I use for data analysis, machine learning and development workflows.",
       skills: [
+        "Power BI",
+        "Excel",
         "Pandas",
         "NumPy",
         "Matplotlib",
@@ -51,69 +52,52 @@ function Skills() {
     },
   ];
 
+
   return (
     <section id="skills" className="skills-section">
       <div className="skills-container">
 
         <Reveal>
-        <div className="section-heading">
-          <p className="section-label">Skills</p>
+          <div className="section-heading">
+            <p className="section-label">Skills</p>
 
-          <h2>
-            Technologies I use to
-            <span> build things.</span>
-          </h2>
-        </div>
+            <h2>
+              Technologies I use to
+              <span> build things.</span>
+            </h2>
+          </div>
         </Reveal>
         <div className="skills-grid">
-  {skillGroups.map((group, index) => (
-    <Reveal
-      key={group.title}
-      delay={index * 0.08}
-    >
-      <div className="skill-card">
-        <div className="skill-card-number">
-          {String(index + 1).padStart(2, "0")}
-        </div>
+          {skillGroups.map((group, index) => (
+            <Reveal
+              key={group.title}
+              delay={index * 0.08}
+            >
+              <div className="skill-card">
+                <div className="skill-card-number">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
 
-        <h3>{group.title}</h3>
+                <h3>{group.title}</h3>
 
-        <p>{group.description}</p>
+                <p>{group.description}</p>
 
-        <div className="skill-list">
-          {group.skills.map((skill) => (
-            <span key={skill}>
-              {skill}
-            </span>
+                <div className="skill-list">
+                  {group.skills.map((skill) => (
+                    <span key={skill}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
           ))}
         </div>
-      </div>
-    </Reveal>
-  ))}
-</div>
-        {/* <div className="skills-grid">
-          {skillGroups.map((group) => (
-            <div className="skill-card" key={group.title}>
-              <div className="skill-card-number">
-                {String(skillGroups.indexOf(group) + 1).padStart(2, "0")}
-              </div>
-
-              <h3>{group.title}</h3>
-
-              <p>{group.description}</p>
-
-              <div className="skill-list">
-                {group.skills.map((skill) => (
-                  <span key={skill}>{skill}</span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div> */}
-
       </div>
     </section>
   );
 }
 
 export default Skills;
+
+

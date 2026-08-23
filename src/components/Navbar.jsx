@@ -46,24 +46,38 @@ function Navbar() {
 
     const observer = new IntersectionObserver(
       (entries) => {
+
         const visibleSections = entries
           .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) =>
-              b.intersectionRatio - a.intersectionRatio
-          );
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
         if (visibleSections.length > 0) {
-          setActiveSection(
-            visibleSections[0].target.id
-          );
+          setActiveSection(visibleSections[0].target.id);
+        } else {
+          /* 
+            2. FALLBACK FOR MASSIVE SECTIONS: 
+            If no section transitions are firing because a section completely 
+            swallows the viewport, manually search for the element engulfing the screen.
+          */
+          const massiveSection = sections.find((section) => {
+            const rect = section.getBoundingClientRect();
+            return rect.top <= 0 && rect.bottom >= window.innerHeight;
+          });
+
+          if (massiveSection) {
+            setActiveSection(massiveSection.id);
+          }
         }
       },
       {
-        rootMargin: "-25% 0px -55% 0px",
+        // open window configuration
+        rootMargin: "-10% 0px -10% 0px",
+        // threshold: [0.0, 0.1, 0.2, 0.4, 0.6, 0.8, 1.0],
+        // rootMargin: "-25% 0px -55% 0px",
         threshold: [0.1, 0.25, 0.5],
       }
     );
+
 
     sections.forEach((section) => {
       observer.observe(section);
@@ -123,7 +137,7 @@ function Navbar() {
 
         {/* Resume */}
         <a
-          href="/resume.pdf"
+          href={profile.resume}
           className="navbar-resume"
           target="_blank"
           rel="noopener noreferrer"
@@ -174,7 +188,7 @@ function Navbar() {
         })}
 
         <a
-          href="/resume.pdf"
+          href={profile.resume}
           className="mobile-resume"
           target="_blank"
           rel="noopener noreferrer"
@@ -188,3 +202,5 @@ function Navbar() {
 }
 
 export default Navbar;
+
+

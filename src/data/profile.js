@@ -31,13 +31,26 @@ const profile = {
 
   resume: "/resume.pdf",
 
-  education: {
+  education: [
+    {
+    id: 1,
     degree: "Bachelor of Computer Applications",
     shortDegree: "BCA",
     year: "2026",
     description:
       "Built a foundation in computer science, programming, databases, web development, software engineering, data science and artificial intelligence.",
+    subjects: ["Programming", "Database Systems", "Web Development", "Data Science", "Artificial Intelligence", "Software Engineering" ],
+              
   },
+    {
+    id: 2,
+    degree: "Intermediate",
+    shortDegree: "INTER",
+    year: "2023",
+    description:
+      "Completed Intermediate (Class 12) education under the Board of High School and Intermediate Education Uttar Pradesh (UP Board)",
+  },
+],
 
   experience: [
     {

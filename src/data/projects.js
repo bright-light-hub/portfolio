@@ -1,8 +1,9 @@
-import aiNavigatorHome from "../assets/projects/ai-navigator-home.png";
-import aiNavigatorDashboard from "../assets/projects/ai-navigator-dashboard.png";
-import samadanThumbnail from "../assets/projects/samadhan-thumbnail.png";
-// import shortNewsThumbnail from "../assets/projects/short-news-thumbnail.png";
-import retailAnalysisThumbnail from "../assets/projects/retail-analysis-thumbnail.png";
+import aiNavigatorHome from "../assets/projects/aiNavigator/ai-navigator-home.png";
+import aiNavigatorDashboard from "../assets/projects/aiNavigator/ai-navigator-dashboard.png";
+
+import retailSelesForcastingThumbnail from "../assets/projects/retailSelesForcasting/retail-seles-forcasting-thumbnail.png"
+import dataSet from "../assets/projects/retailSelesForcasting/data-set.png"
+import heatmap from "../assets/projects/retailSelesForcasting/heatmap.png"
 
 
 const projects = [
@@ -33,8 +34,8 @@ const projects = [
       "Career progress tracking",
     ],
 
-    github: "#",
-    liveDemo: "#",
+    github: "https://github.com/bright-light-hub/ai-navigator-client",
+    liveDemo: "https://ai-navigator-client.vercel.app/",
 
     featured: true,
 
@@ -50,89 +51,10 @@ const projects = [
     ],
   },
 
+
   {
     id: 2,
-    title: "Samadhan",
-    shortTitle: "Samadhan",
-    category: "Django / Full-Stack",
-    type: "Web Application",
-
-    description:
-      "A grievance management portal designed to allow users to submit complaints, track complaint status and access support information through a structured web application.",
-
-    technologies: [
-      "Python",
-      "Django",
-      "REST API",
-      "HTML",
-      "CSS",
-      "JavaScript",
-    ],
-
-    highlights: [
-      "Complaint submission",
-      "Status tracking",
-      "Structured grievance workflow",
-      "Responsive interface",
-    ],
-
-    github: "#",
-    liveDemo: false,
-
-    featured: true,
-    visualClass: "project-visual-samadhan",
-
-    images: [
-      {
-        src: samadanThumbnail,
-        alt: "Samadhan grievance management portal",
-      },
-    ],
-  },
-
-  {
-    id: 3,
-    title: "Short News",
-    shortTitle: "Short News",
-    category: "Python / NLP",
-    type: "AI Application",
-
-    description:
-      "A news summarization web application that processes longer news articles and generates concise summaries using a transformer-based natural language processing model.",
-
-    technologies: [
-      "Python",
-      "Django",
-      "Hugging Face",
-      "NLP",
-      "HTML",
-      "CSS",
-    ],
-
-    highlights: [
-      "Article processing",
-      "Automatic summarization",
-      "Transformer-based NLP",
-      "Web interface",
-    ],
-
-    github: "#",
-    liveDemo: "#",
-
-    featured: false,
-    visualClass: "project-visual-news",
-
-    // images: [
-    //   {
-    //     src: shortNewsThumbnail,
-    //     alt: "Short News application",
-    //   },
-    // ],
-  },
-
-  {
-    id: 4,
-    title: "Retail Sales Analysis",
+    title: "Retail Sales Forcasting",
     shortTitle: "Retail Analysis",
     category: "Data Science / ML",
     type: "Data Science Project",
@@ -145,6 +67,7 @@ const projects = [
       "Pandas",
       "NumPy",
       "Matplotlib",
+      "seaboarn",
       "Scikit-learn",
     ],
 
@@ -155,57 +78,29 @@ const projects = [
       "Predictive modeling",
     ],
 
-    github: "#",
-    liveDemo: "#",
+    github: "https://github.com/bright-light-hub/RetailSalesForecasting",
+    liveDemo: "https://github.com/bright-light-hub/RetailSalesForecasting/blob/main/Retail%20Sales%20Prediction.ipynb",
 
     featured: false,
     visualClass: "project-visual-data",
     images: [
       {
-        src: retailAnalysisThumbnail,
-        alt: "Retail Sales Analysis project",
+        src: retailSelesForcastingThumbnail,
+        alt: "Retail Sales Forcasting project",
+      },
+      {
+        src: dataSet,
+        alt: "Retail Sales Forcasting DataSet",
+      },
+      {
+        src: heatmap,
+        alt: "Retail Sales Forcasting HeatMap",
       },
     ],
   },
 
 
-  {
-    id: 5,
-    title: "Helth Monitor ",
-    shortTitle: "Helth Monitor",
-    category: "Data Science / ML",
-    type: "Data Science Project",
-
-    description:
-      "A large-scale retail sales analysis project involving exploratory data analysis, preprocessing, feature engineering, visualization and machine learning models.",
-
-    technologies: [
-      "Python",
-      "Pandas",
-      "NumPy",
-      "Matplotlib",
-      "Scikit-learn",
-    ],
-
-    highlights: [
-      "Large retail dataset analysis",
-      "Exploratory data analysis",
-      "Feature engineering",
-      "Predictive modeling",
-    ],
-
-    github: "#",
-    liveDemo: "#",
-
-    featured: false,
-    // visualClass: "project-visual-data",
-    // images: [
-    //   {
-    //     src: "",
-    //     // alt: "Retail Sales Analysis project",
-    //   },
-    // ],
-  },
+  
 ];
 
 export default projects;

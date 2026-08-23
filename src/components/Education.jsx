@@ -7,49 +7,52 @@ function Education() {
       <div className="education-container">
 
         <Reveal>
-        <div className="section-heading">
-          <p className="section-label">Education</p>
+          <div className="section-heading">
+            <p className="section-label">Education</p>
 
-          <h2>
-            My academic
-            <span> foundation.</span>
-          </h2>
-        </div>
-</Reveal>
-<Reveal delay={0.1}>
-        <div className="education-card">
-
-          <div className="education-year">
-            {profile.education.year}
+            <h2>
+              My academic
+              <span> foundation.</span>
+            </h2>
           </div>
+        </Reveal>
+        <Reveal delay={0.1}>
+          {profile.education.map((edu, index) => (
+            <div className="education-card" key={edu.id || index}>
 
-          <div className="education-content">
-            <p className="education-degree">
-              {profile.education.shortDegree}
-            </p>
+              <div className="education-year">
+                {edu.year}
+              </div>
 
-            <h3>
-              {profile.education.degree}
-            </h3>
+              <div className="education-content">
+                <p className="education-degree">
+                  {edu.shortDegree}
+                </p>
 
-            <p className="education-description">
-              {profile.education.description}
-            </p>
+                <h3>
+                  {edu.degree}
+                </h3>
 
-            <div className="education-subjects">
-              <span>Programming</span>
-              <span>Database Systems</span>
-              <span>Web Development</span>
-              <span>Data Science</span>
-              <span>Artificial Intelligence</span>
-              <span>Software Engineering</span>
+                <p className="education-description">
+                  {edu.description}
+                </p>
+
+
+                {edu.subjects && edu.subjects.length > 0 && (
+                  <div className="education-subjects">
+                    {edu.subjects.map((subject, subIndex) => (
+                      <span key={subIndex}>{subject}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+
             </div>
-          </div>
+          ))}
 
-        </div>
         </Reveal>
 
-        
+
 
       </div>
     </section>

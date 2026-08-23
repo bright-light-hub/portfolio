@@ -22,7 +22,7 @@ function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeImage, setActiveImage] = useState(0);
 
-    useEffect(() => {
+  useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         setSelectedProject(null);
@@ -36,7 +36,7 @@ function Projects() {
     };
   }, []);
 
-    useEffect(() => {
+  useEffect(() => {
     document.body.style.overflow = selectedProject
       ? "hidden"
       : "";
@@ -81,25 +81,24 @@ function Projects() {
 
                 {/* Project Visual */}
                 <div
-  className={`project-visual ${
-    project.images?.length
-      ? "project-visual-real"
-      : project.visualClass
-  }`}
-  onClick={() => {
-    setSelectedProject(project);
-    setActiveImage(0);
-  }}
-  role="button"
-  tabIndex={0}
-  onKeyDown={(event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      setSelectedProject(project);
-      setActiveImage(0);
-    }
-  }}
-  aria-label={`View ${project.title} project`}
->
+                  className={`project-visual ${project.images?.length
+                      ? "project-visual-real"
+                      : project.visualClass
+                    }`}
+                  onClick={() => {
+                    setSelectedProject(project);
+                    setActiveImage(0);
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      setSelectedProject(project);
+                      setActiveImage(0);
+                    }
+                  }}
+                  aria-label={`View ${project.title} project`}
+                >
                   {project.images?.length ? (
                     <div className="project-browser">
 
@@ -228,182 +227,148 @@ function Projects() {
       </div>
 
       {selectedProject && (
-  <div
-    className="project-modal"
-    onClick={(event) => {
-      if (event.target === event.currentTarget) {
-        setSelectedProject(null);
-      }
-    }}
-  >
-    <div className="project-modal-content">
+        <div
+          className="project-modal"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              setSelectedProject(null);
+            }
+          }}
+        >
+          <div className="project-modal-content">
 
-      <button
-        className="project-modal-close"
-        onClick={() => setSelectedProject(null)}
-        aria-label="Close project preview"
-      >
-        ×
-      </button>
-
-      <div className="project-modal-header">
-        <div>
-          <span className="project-category">
-            {selectedProject.category}
-          </span>
-
-          <h3>{selectedProject.title}</h3>
-        </div>
-      </div>
-
-      {/* <div className="project-modal-image">
-        <img
-          src={
-            selectedProject.images[activeImage].src
-          }
-          alt={
-            selectedProject.images[activeImage].alt
-          }
-        />
-      </div> */}
-      
-      {/* {selectedProject.images.length > 1 && (
-        <div className="project-modal-thumbnails">
-          {selectedProject.images.map(
-            (image, index) => (
-              <button
-                key={image.src}
-                className={
-                  activeImage === index
-                    ? "active"
-                    : ""
-                }
-                onClick={() => setActiveImage(index)}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                />
-              </button>
-            )
-          )}
-        </div>
-      )} */}
-
-      {selectedProject.images?.length ? (
-  <>
-    <div className="project-modal-image">
-      <img
-        src={
-          selectedProject.images[activeImage].src
-        }
-        alt={
-          selectedProject.images[activeImage].alt
-        }
-      />
-    </div>
-
-    {selectedProject.images.length > 1 && (
-      <div className="project-modal-thumbnails">
-        {selectedProject.images.map(
-          (image, index) => (
             <button
-              key={image.src}
-              className={
-                activeImage === index
-                  ? "active"
-                  : ""
-              }
-              onClick={() =>
-                setActiveImage(index)
-              }
+              className="project-modal-close"
+              onClick={() => setSelectedProject(null)}
+              aria-label="Close project preview"
             >
-              <img
-                src={image.src}
-                alt={image.alt}
-              />
+              ×
             </button>
-          )
-        )}
-      </div>
-    )}
-  </>
-) : (
-  <div className="project-modal-no-image">
-    <div className="project-modal-placeholder">
-      <span>
-        {selectedProject.type}
-      </span>
 
-      <strong>
-        {selectedProject.title}
-      </strong>
+            <div className="project-modal-header">
+              <div>
+                <span className="project-category">
+                  {selectedProject.category}
+                </span>
 
-      <small>
-        Project preview coming soon
-      </small>
-    </div>
-  </div>
-)}
+                <h3>{selectedProject.title}</h3>
+              </div>
+            </div>
 
-      <div className="project-modal-info">
+            {selectedProject.images?.length ? (
+              <>
+                <div className="project-modal-image">
+                  <img
+                    src={
+                      selectedProject.images[activeImage].src
+                    }
+                    alt={
+                      selectedProject.images[activeImage].alt
+                    }
+                  />
+                </div>
 
-        <p>
-          {selectedProject.description}
-        </p>
+                {selectedProject.images.length > 1 && (
+                  <div className="project-modal-thumbnails">
+                    {selectedProject.images.map(
+                      (image, index) => (
+                        <button
+                          key={image.src}
+                          className={
+                            activeImage === index
+                              ? "active"
+                              : ""
+                          }
+                          onClick={() =>
+                            setActiveImage(index)
+                          }
+                        >
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                          />
+                        </button>
+                      )
+                    )}
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="project-modal-no-image">
+                <div className="project-modal-placeholder">
+                  <span>
+                    {selectedProject.type}
+                  </span>
 
-        <div className="project-modal-highlights">
-          {selectedProject.highlights.map(
-            (highlight) => (
-              <span key={highlight}>
-                {highlight}
-              </span>
-            )
-          )}
-        </div>
+                  <strong>
+                    {selectedProject.title}
+                  </strong>
 
-        <div className="project-technologies">
-          {selectedProject.technologies.map(
-            (technology) => (
-              <span key={technology}>
-                {technology}
-              </span>
-            )
-          )}
-        </div>
-
-        <div className="project-modal-links">
-
-          {selectedProject.github !== "#" && (
-            <a
-              href={selectedProject.github}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-              <ArrowUpRight size={16} />
-            </a>
-          )}
-
-          {selectedProject.liveDemo &&
-            selectedProject.liveDemo !== "#" && (
-              <a
-                href={selectedProject.liveDemo}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Live Demo
-                <ArrowUpRight size={16} />
-              </a>
+                  <small>
+                    Project preview coming soon
+                  </small>
+                </div>
+              </div>
             )}
 
+            <div className="project-modal-info">
+
+              <p>
+                {selectedProject.description}
+              </p>
+
+              <div className="project-modal-highlights">
+                {selectedProject.highlights.map(
+                  (highlight) => (
+                    <span key={highlight}>
+                      {highlight}
+                    </span>
+                  )
+                )}
+              </div>
+
+              <div className="project-technologies">
+                {selectedProject.technologies.map(
+                  (technology) => (
+                    <span key={technology}>
+                      {technology}
+                    </span>
+                  )
+                )}
+              </div>
+
+              <div className="project-modal-links">
+
+                {selectedProject.github !== "#" && (
+                  <a
+                    href={selectedProject.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                    <ArrowUpRight size={16} />
+                  </a>
+                )}
+
+                {selectedProject.liveDemo &&
+                  selectedProject.liveDemo !== "#" && (
+                    <a
+                      href={selectedProject.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live Demo
+                      <ArrowUpRight size={16} />
+                    </a>
+                  )}
+
+              </div>
+
+            </div>
+
+          </div>
         </div>
-
-      </div>
-
-    </div>
-  </div>
-)}
+      )}
     </section>
   );
 }
